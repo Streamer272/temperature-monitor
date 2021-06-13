@@ -1,5 +1,22 @@
+import random
+
+from gpiozero import CPUTemperature
+from time import sleep
+from src.logger import Logger
+from src.graph import Graph
+
+
 def run():
-    pass
+    win = Graph()
+
+    while True:
+        # temp = CPUTemperature().temperature
+        temp = random.randint(10, 90)
+        Logger.log(f"{temp}", Logger.INFO)
+        win.add(temp)
+        win.show_graph()
+
+        sleep(5)
 
 
 if __name__ == '__main__':
