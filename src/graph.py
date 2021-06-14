@@ -10,9 +10,12 @@ class Graph:
 
     def add(self, temp):
         self.temps.append(temp)
-        del self.temps[-1]
+        del self.temps[0]
 
     def show_graph(self):
+        pyplot.show()
+
+    def update_data(self):
         pyplot.ion()
 
         times = []
@@ -24,7 +27,7 @@ class Graph:
         pyplot.scatter(times, self.temps)
         pyplot.plot(times, self.temps)
 
-        pyplot.show()
+        pyplot.draw()
 
     def hide_graph(self):
         pyplot.ioff()
