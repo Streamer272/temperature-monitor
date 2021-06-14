@@ -3,25 +3,17 @@ import random
 from gpiozero import CPUTemperature
 from time import sleep
 from src.logger import Logger
-from src.graph import Graph
+from src.config_controller import ConfigController
 
 
 def run():
-    win = Graph()
-
     while True:
-        win.hide_graph()
-
         # temp = CPUTemperature().temperature
         temp = random.randint(10, 90)
 
         Logger.log(f"{temp}", Logger.INFO)
 
-        win.add(temp)
-        win.update_data()
-        win.show_graph()
-
-        sleep(.5)
+        sleep(ConfigController.get_logging_speed())
 
 
 if __name__ == '__main__':
